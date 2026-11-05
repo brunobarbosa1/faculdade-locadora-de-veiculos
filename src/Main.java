@@ -3,15 +3,17 @@
 public class Main {
     public static void main(String[] args) {
 
-        Veiculo[] frota = {
-                new Carro(1, "ABC1D23", "Fiat", "Argo", 2023, 120.0, 4, true),
-                new Moto(2, "XYZ9K87", "Honda", "CB 650R", 2022, 90.0, 650)
-        };
+        Cliente c = new Cliente(1, "Bruno", "123.456.789-00", "12345678900", "(11) 99999-0000");
+        Carro carro = new Carro(1, "ABC1D23", "Fiat", "Argo", 2023, 120.0, 4, true);
 
-        for (Veiculo v : frota) {
-            v.exibirInfo();
-            System.out.printf("      3 dias = R$ %.2f%n%n", v.calcularValorDoAluguel(3));
-        }
+        Locacao loc = new Locacao(1, c, carro, 3);
+        loc.exibirInfo();
+        System.out.println("Status do carro: " + carro.getStatus());
+
+        double total = loc.finalizar(5);
+        System.out.printf("Multa: R$ %.2f%n", loc.calcularMulta());
+        System.out.printf("Total: R$ %.2f%n", total);
+        System.out.println("Status do carro: " + carro.getStatus());
 
     }
 }
