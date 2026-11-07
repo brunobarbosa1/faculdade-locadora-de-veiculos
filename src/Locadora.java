@@ -23,6 +23,7 @@ public class Locadora {
     public void cadastrarVeiculo(Veiculo veiculo) {
         if (buscarVeiculoPorPlaca(veiculo.getPlaca()) != null) {
             System.out.println("Erro: já existe um veículo com essa placa.");
+            return;
         }
         veiculos.add(veiculo);
         proximoIdVeiculo++;
